@@ -1,5 +1,17 @@
-$(document).ready(function () {
+$(document).ready(function(){
+  $("form").submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/rolls',
+      method: 'POST' 
+    }).done(
+    function(data){
+      console.log(data)
+      $('#die img').attr("src","/"+data+".png")
+      // var random_number = Math.floor(Math.random(6))
+      });
 
+  });
   // PSEUDO-CODE:
   //   1- intercept the form submission event using jQuery
   //   2- prevent the default action for that event from happening
